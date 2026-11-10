@@ -1,0 +1,584 @@
+schemaVersion: 1
+format: "agent-builder-progress"
+note: "Mutable progress only. Topic definitions live in topics.yaml."
+topics:
+  P0-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P0-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P0-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P0-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P0-T05:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P0-T06:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P0-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P0-T08:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P1-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T06:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T08:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T09:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P1-T10:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T02:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P2-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T06:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P2-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T08:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P2-T09:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T10:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P2-T11:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T12:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T13:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T14:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P2-T15:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T01:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T06:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T07:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T08:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T09:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T10:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P3-T11:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P3-T12:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T01:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T02:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T03:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T04:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T05:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T06:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T07:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T08:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P4-T09:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T10:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T11:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T12:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T13:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T14:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P4-T15:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P4-T16:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T17:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T18:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T19:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P4-T20:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P5-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T06:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T08:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T09:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T10:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T11:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T12:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P5-T13:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P5-T14:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T06:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T08:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P6-T09:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T10:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P6-T11:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P6-T12:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P6-T13:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T14:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P6-T15:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P7-T01:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T02:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T03:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T04:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T05:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T06:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T07:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T08:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T09:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P7-T10:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P8-T01:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T02:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T03:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T04:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T05:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T06:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T07:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T08:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T09:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T10:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null
+  P8-T11:
+    status: "Not Started"
+    owner: "developer-a"
+    notes: ""
+    completionDate: null
+  P8-T12:
+    status: "Not Started"
+    owner: "developer-b"
+    notes: ""
+    completionDate: null

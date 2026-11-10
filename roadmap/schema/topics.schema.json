@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.agent-builder/schema/topics.schema.json",
+  "title": "Agent Builder topic registry",
+  "type": "object",
+  "required": ["schemaVersion", "project", "statuses", "contributors", "phases", "milestones", "topics"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "project": { "type": "string" },
+    "statuses": {
+      "type": "array",
+      "items": {
+        "enum": ["Not Started", "Learning", "Practicing", "Blocked", "Done"]
+      }
+    },
+    "contributors": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "focus"],
+        "properties": {
+          "id": { "enum": ["developer-a", "developer-b"] },
+          "name": { "type": "string" },
+          "focus": { "type": "string" }
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "deliverable"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^P[0-8]$" }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "phase"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^M[0-8]$" }
+        }
+      }
+    },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "phase",
+          "description",
+          "priority",
+          "estimatedLearningHours",
+          "estimatedImplementationHours",
+          "dependencies",
+          "defaultOwner",
+          "designation",
+          "learningDoc",
+          "handsOnDeliverable",
+          "definitionOfDone"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^P[0-8]-T[0-9]{2}$" },
+          "title": { "type": "string", "minLength": 3 },
+          "phase": { "type": "string", "pattern": "^P[0-8]$" },
+          "description": { "type": "string" },
+          "priority": { "enum": ["high", "medium", "low"] },
+          "estimatedLearningHours": { "type": "number", "minimum": 0 },
+          "estimatedImplementationHours": { "type": "number", "minimum": 0 },
+          "dependencies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "defaultOwner": { "enum": ["developer-a", "developer-b"] },
+          "designation": { "enum": ["mvp", "advanced"] },
+          "learningDoc": { "type": "string" },
+          "handsOnDeliverable": { "type": "string" },
+          "definitionOfDone": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

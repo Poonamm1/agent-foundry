@@ -1,0 +1,32 @@
+name: Topic work
+description: Track learning or implementation for a roadmap topic
+title: "[P?-T??] "
+labels: ["topic"]
+body:
+  - type: input
+    id: topic_id
+    attributes:
+      label: Topic ID
+      placeholder: P2-T13
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Work type
+      options: [Learning, Implementation, Both]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / blockers
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: Done means
+      options:
+        - label: I can explain the concept
+        - label: I understand why it matters for the agent
+        - label: Hands-on exercise (or equivalent) is complete
+        - label: Definition of Done in the topic doc is satisfied

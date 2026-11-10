@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.agent-builder/schema/progress.schema.json",
+  "title": "Agent Builder progress export",
+  "type": "object",
+  "required": ["schemaVersion", "topics"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "format": { "const": "agent-builder-progress" },
+    "exportedAt": { "type": "string" },
+    "note": { "type": "string" },
+    "topics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "additionalProperties": true,
+        "properties": {
+          "status": {
+            "enum": ["Not Started", "Learning", "Practicing", "Blocked", "Done"]
+          },
+          "owner": {
+            "enum": ["developer-a", "developer-b", "unassigned"]
+          },
+          "notes": { "type": "string" },
+          "completionDate": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

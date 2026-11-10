@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  roadmap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate YAML registries
+        run: |
+          pip install pyyaml jsonschema
+          python scripts/validate_roadmap.py
+      - name: Agent tests
+        working-directory: agent
+        run: |
+          pip install pytest
+          PYTHONPATH=src pytest
+      - name: Ingestion tests
+        working-directory: ingestion
+        run: |
+          pip install pytest
+          PYTHONPATH=src pytest
+
+  dashboard:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm test
+      - run: npm run build

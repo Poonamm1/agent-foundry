@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Atlas Inventory API (synthetic)
+  version: 0.1.0
+paths:
+  /reservations:
+    post:
+      operationId: createReservation
+      summary: Create an inventory reservation hold
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sku:
+                  type: string
+      responses:
+        "201":
+          description: Created

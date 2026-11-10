@@ -1,0 +1,27 @@
+name: Connector
+description: Ingestion or source-adapter work
+title: "[connector] "
+labels: ["connector"]
+body:
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      options:
+        - Confluence
+        - PDF
+        - Git
+        - SVN
+        - Java code
+        - Relational databases
+        - Kafka
+        - REST APIs
+        - Shared drives
+        - Teams
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Fixtures only unless an approval is recorded elsewhere. Never commit real data.

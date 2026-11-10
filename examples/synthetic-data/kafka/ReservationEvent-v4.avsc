@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "ReservationEvent",
+  "namespace": "atlas.inventory",
+  "doc": "Synthetic event for inventory.reserved subject version 4",
+  "fields": [
+    { "name": "reservationId", "type": "string" },
+    { "name": "sku", "type": "string" },
+    { "name": "ttlMinutes", "type": "int" },
+    { "name": "status", "type": "string" }
+  ]
+}

@@ -1,0 +1,27 @@
+schemaVersion: 1
+dataset: atlas-golden-v1
+questions:
+  - id: GQ-01
+    question: Where is the reservation TTL business rule implemented?
+    goldSourceIds:
+      - java:ReservationService
+      - confluence:10042
+  - id: GQ-02
+    question: How does reservation data move across the database, Kafka, and APIs?
+    goldSourceIds:
+      - sql:reservation
+      - kafka:ReservationEvent-v4
+      - rest:createReservation
+  - id: GQ-03
+    question: What decisions were made during the reservation review meeting?
+    goldSourceIds:
+      - teams:aip-meet-2026-03-12
+  - id: GQ-04
+    question: What is the latest approved reservation architecture?
+    goldSourceIds:
+      - pdf:reservation-design-v3
+      - confluence:10042
+  - id: GQ-05
+    question: Which design questions about reservation are still unresolved?
+    goldSourceIds:
+      - teams:aip-meet-2026-03-12

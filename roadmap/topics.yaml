@@ -1,0 +1,2199 @@
+# Canonical topic registry. Do not duplicate topic definitions elsewhere.
+schemaVersion: 1
+project: "agent-builder"
+statuses:
+  - "Not Started"
+  - Learning
+  - Practicing
+  - Blocked
+  - Done
+contributors:
+  - id: "developer-a"
+    name: "Developer A"
+    focus: "Agent, RAG, orchestration and evaluation"
+  - id: "developer-b"
+    name: "Developer B"
+    focus: "Ingestion, connectors and infrastructure"
+doneMeans:
+  - "The developer can explain the concept"
+  - "The developer understands why it matters to the agent"
+  - "A practical exercise or equivalent demonstration is completed"
+  - "The documented Definition of Done is satisfied"
+phases:
+  - id: P0
+    title: "Project Setup and Architecture"
+    weekRange: "Week 1"
+    deliverable: "Repository, roadmap, and architecture baseline"
+    summary: "Align on product vision, scope, architecture, security, and the development environment."
+    topicCount: 8
+    estimatedLearningHours: 19
+    estimatedImplementationHours: 14
+  - id: P1
+    title: "LLM Foundations"
+    weekRange: "Weeks 2–3"
+    deliverable: "Basic LLM question-answering application"
+    summary: "Learn model APIs, prompting, structured outputs, tool calling, and grounded answering."
+    topicCount: 10
+    estimatedLearningHours: 24
+    estimatedImplementationHours: 21
+  - id: P2
+    title: "RAG and Knowledge Retrieval"
+    weekRange: "Weeks 3–4"
+    deliverable: "Document-grounded Q&A prototype with citations"
+    summary: "Parse, chunk, embed, retrieve, rerank, and cite synthetic project documents."
+    topicCount: 15
+    estimatedLearningHours: 34
+    estimatedImplementationHours: 36
+  - id: P3
+    title: "GCP and Agent Framework"
+    weekRange: "Weeks 4–5"
+    deliverable: "Initial deployable agent application"
+    summary: "Run a Google ADK agent with Gemini locally and deploy a skeleton to Cloud Run."
+    topicCount: 12
+    estimatedLearningHours: 25
+    estimatedImplementationHours: 29
+  - id: P4
+    title: "Knowledge Ingestion and Connectors"
+    weekRange: "Weeks 5–7"
+    deliverable: "Reusable ingestion framework and prioritized connectors"
+    summary: "Build adapters for authorized sources without connecting to production systems."
+    topicCount: 20
+    estimatedLearningHours: 44
+    estimatedImplementationHours: 56
+  - id: P5
+    title: "Agent Orchestration and Tool Integration"
+    weekRange: "Weeks 7–8"
+    deliverable: "A single agent capable of selecting multiple authorized tools"
+    summary: "Connect retrieval and diagnostic tools to one orchestrated agent."
+    topicCount: 14
+    estimatedLearningHours: 28
+    estimatedImplementationHours: 30
+  - id: P6
+    title: "Security, Evaluation and Reliability"
+    weekRange: "Weeks 8–9"
+    deliverable: "Evaluated and security-reviewed prototype"
+    summary: "Measure groundedness, enforce least privilege, and add regression checks."
+    topicCount: 15
+    estimatedLearningHours: 32
+    estimatedImplementationHours: 36
+  - id: P7
+    title: "Advanced Knowledge Intelligence"
+    weekRange: "Weeks 9–10"
+    deliverable: "Advanced cross-source project intelligence"
+    summary: "Extract decisions, trace requirements, and detect contradictions across sources."
+    topicCount: 10
+    estimatedLearningHours: 24
+    estimatedImplementationHours: 29
+  - id: P8
+    title: "Deployment and Production Readiness"
+    weekRange: "Week 10+"
+    deliverable: "Deployable, maintainable knowledge-agent MVP"
+    summary: "Containerize, monitor, document operations, and complete a readiness checklist."
+    topicCount: 12
+    estimatedLearningHours: 22
+    estimatedImplementationHours: 25
+milestones:
+  - id: M0
+    title: "Architecture baseline"
+    phase: P0
+    week: 1
+    criteria:
+      - "Canonical roadmap exists"
+      - "Architecture and ADRs reviewed by both developers"
+      - "Dashboard loads topics from YAML"
+  - id: M1
+    title: "LLM Q&A slice"
+    phase: P1
+    week: 3
+    criteria:
+      - "Gemini-backed Q&A runs locally with synthetic prompts"
+      - "Structured output and a sample tool call are demonstrated"
+  - id: M2
+    title: "Cited RAG prototype"
+    phase: P2
+    week: 4
+    criteria:
+      - "Synthetic PDFs and Markdown are retrievable"
+      - "Answers include source citations"
+  - id: M3
+    title: "Deployable ADK agent"
+    phase: P3
+    week: 5
+    criteria:
+      - "ADK agent runs locally"
+      - "Container image builds and a Cloud Run deploy path is documented"
+  - id: M4
+    title: "Ingestion MVP"
+    phase: P4
+    week: 7
+    criteria:
+      - "PDF, Git, and schema adapters ingest synthetic data"
+      - "ACL and provenance fields are preserved"
+  - id: M5
+    title: "Multi-tool agent"
+    phase: P5
+    week: 8
+    criteria:
+      - "Agent selects among retrieval, schema, and metadata tools"
+      - "Cross-source questions return cited answers"
+  - id: M6
+    title: "Evaluated secure prototype"
+    phase: P6
+    week: 9
+    criteria:
+      - "Golden questions have regression scores"
+      - "Permission-aware retrieval is demonstrated on synthetic ACLs"
+  - id: M7
+    title: "Decision intelligence slice"
+    phase: P7
+    week: 10
+    criteria:
+      - "Meeting decisions are extracted with provenance"
+      - "A change-impact question is answered from code plus docs"
+  - id: M8
+    title: "Production-ready MVP"
+    phase: P8
+    week: 10
+    criteria:
+      - "CI/CD, monitoring, and rollback are documented"
+      - "Production readiness checklist is complete"
+topics:
+  - id: "P0-T01"
+    title: "AI agent product vision"
+    phase: P0
+    description: "Define what the Project Knowledge Agent will and will not do."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      []
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T01-ai-agent-product-vision.md"
+    handsOnDeliverable: "Reviewed product vision in docs/architecture/vision.md"
+    definitionOfDone:
+      - "Both developers can explain the vision"
+      - "Example questions are documented"
+      - "Non-goals are explicit"
+  - id: "P0-T02"
+    title: "Scope and non-goals"
+    phase: P0
+    description: "Draw a hard boundary around MVP capabilities."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P0-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T02-scope-and-non-goals.md"
+    handsOnDeliverable: "Scope and non-goals section in architecture docs"
+    definitionOfDone:
+      - "In-scope sources listed"
+      - "Write actions marked non-goal"
+      - "Both owners agree"
+  - id: "P0-T03"
+    title: "Functional and non-functional requirements"
+    phase: P0
+    description: "Capture functional and non-functional requirements for the agent."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T01"
+      - "P0-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T03-functional-and-non-functional-requirements.md"
+    handsOnDeliverable: "Requirements in docs/architecture/nfr.md"
+    definitionOfDone:
+      - "Requirements file exists"
+      - "Each NFR is verifiable"
+      - "Security NFRs include ACLs and secrets"
+  - id: "P0-T04"
+    title: "High-level architecture"
+    phase: P0
+    description: "Document the request path and the ingestion path."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T03"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T04-high-level-architecture.md"
+    handsOnDeliverable: "Mermaid diagrams in docs/architecture/high-level.md"
+    definitionOfDone:
+      - "Both diagrams are in git"
+      - "Owners assigned"
+      - "No production credentials referenced"
+  - id: "P0-T05"
+    title: "Data source inventory"
+    phase: P0
+    description: "Inventory authorized sources and the questions they can answer."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T02"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T05-data-source-inventory.md"
+    handsOnDeliverable: "Inventory table in docs/architecture/data-sources.md"
+    definitionOfDone:
+      - "Ten sources inventoried"
+      - "MVP priority set"
+      - "Access assumed to require approval"
+  - id: "P0-T06"
+    title: "Security boundaries"
+    phase: P0
+    description: "Define trust boundaries, identities, and data classes."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T04"
+      - "P0-T05"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T06-security-boundaries.md"
+    handsOnDeliverable: "Security notes in docs/architecture/security.md"
+    definitionOfDone:
+      - "Boundaries documented"
+      - "Write actions need human approval"
+      - "PII handling described"
+  - id: "P0-T07"
+    title: "Technology selection and tradeoffs"
+    phase: P0
+    description: "Record why Python, ADK, Gemini, Cloud Run, and Markdown were chosen."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P0-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T07-technology-selection-and-tradeoffs.md"
+    handsOnDeliverable: "ADRs 0001–0007"
+    definitionOfDone:
+      - "Core ADRs exist"
+      - "Alternatives listed"
+      - "Consequences listed"
+  - id: "P0-T08"
+    title: "Development environment setup"
+    phase: P0
+    description: "Set up Git, Python, Node, and local conventions."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P0-T07"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P0/P0-T08-development-environment-setup.md"
+    handsOnDeliverable: "Dashboard and Python smoke tests passing locally"
+    definitionOfDone:
+      - "Quick start works"
+      - "CI workflow files exist"
+      - "No secrets committed"
+  - id: "P1-T01"
+    title: "LLM fundamentals"
+    phase: P1
+    description: "Understand what large language models do and do not do."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P0-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T01-llm-fundamentals.md"
+    handsOnDeliverable: "Short note explaining next-token prediction vs retrieval"
+    definitionOfDone:
+      - "Can explain next-token prediction"
+      - "Can explain why private facts need retrieval"
+      - "Demo recorded in learning notes"
+  - id: "P1-T02"
+    title: "Tokens and context windows"
+    phase: P1
+    description: "Learn tokenization, context limits, and prompt budgets."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P1-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T02-tokens-and-context-windows.md"
+    handsOnDeliverable: "A prompt-budget spreadsheet for Atlas Q&A"
+    definitionOfDone:
+      - "Prompt budget documented"
+      - "Knows that retrieval must fit the window"
+      - "Can explain overflow failure modes"
+  - id: "P1-T03"
+    title: "Transformer concepts at a practical level"
+    phase: P1
+    description: "Learn attention and transformer blocks only as far as they affect product choices."
+    priority: medium
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 0
+    dependencies:
+      - "P1-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T03-transformer-concepts-at-a-practical-level.md"
+    handsOnDeliverable: "One-page practical transformer note"
+    definitionOfDone:
+      - "Practical summary written"
+      - "No claim of training expertise required"
+      - "Product implications listed"
+  - id: "P1-T04"
+    title: "Prompt engineering"
+    phase: P1
+    description: "Write prompts that specify task, format, and uncertainty handling."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P1-T01"
+      - "P1-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T04-prompt-engineering.md"
+    handsOnDeliverable: "Prompt file for Atlas Q&A with citation rules"
+    definitionOfDone:
+      - "Prompt checked in"
+      - "Unknowns are handled"
+      - "Citation format specified"
+  - id: "P1-T05"
+    title: "System instructions"
+    phase: P1
+    description: "Separate durable agent policy from per-turn user questions."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P1-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T05-system-instructions.md"
+    handsOnDeliverable: "System instruction draft for the knowledge agent"
+    definitionOfDone:
+      - "Instruction file exists"
+      - "Read-only policy present"
+      - "Injection clause present"
+  - id: "P1-T06"
+    title: "Temperature and generation controls"
+    phase: P1
+    description: "Use temperature, top-p, and max tokens deliberately."
+    priority: medium
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P1-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T06-temperature-and-generation-controls.md"
+    handsOnDeliverable: "Config defaults for factual vs brainstorming modes"
+    definitionOfDone:
+      - "Defaults documented"
+      - "Factual mode is low temperature"
+      - "Settings are part of eval config"
+  - id: "P1-T07"
+    title: "Structured outputs"
+    phase: P1
+    description: "Force machine-readable answers when the product needs them."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P1-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T07-structured-outputs.md"
+    handsOnDeliverable: "JSON schema for cited answers"
+    definitionOfDone:
+      - "Schema documented"
+      - "Validator exists or is specified"
+      - "Failure behavior defined"
+  - id: "P1-T08"
+    title: "Function and tool calling"
+    phase: P1
+    description: "Let the model request tools instead of pretending it executed them."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P1-T07"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T08-function-and-tool-calling.md"
+    handsOnDeliverable: "One sample tool definition with a mocked implementation"
+    definitionOfDone:
+      - "Tool schema written"
+      - "Mock execution works"
+      - "Model cannot skip the tool in the demo"
+  - id: "P1-T09"
+    title: "Hallucinations and grounding"
+    phase: P1
+    description: "Detect unsupported claims and require evidence."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P1-T04"
+      - "P1-T05"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T09-hallucinations-and-grounding.md"
+    handsOnDeliverable: "Grounding policy in system instructions"
+    definitionOfDone:
+      - "Policy written"
+      - "Missing-evidence demo recorded"
+      - "No fabricated Atlas identifiers in the demo"
+  - id: "P1-T10"
+    title: "Model APIs, latency and cost"
+    phase: P1
+    description: "Call Gemini through supported APIs and measure cost and latency."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P1-T01"
+      - "P1-T06"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P1/P1-T10-model-apis-latency-and-cost.md"
+    handsOnDeliverable: "Local Q&A script with timing and token logging"
+    definitionOfDone:
+      - "CLI or notebook exists"
+      - "Tokens logged"
+      - "No keys in git"
+  - id: "P2-T01"
+    title: "RAG architecture"
+    phase: P2
+    description: "Map retrieval-augmented generation components."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P1-T09"
+      - "P1-T10"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T01-rag-architecture.md"
+    handsOnDeliverable: "RAG component diagram for Atlas Q&A"
+    definitionOfDone:
+      - "Diagram exists"
+      - "Empty-retrieval behavior defined"
+      - "Citations are in the path"
+  - id: "P2-T02"
+    title: "Document parsing"
+    phase: P2
+    description: "Extract text and structure from PDFs and HTML-like docs."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T02-document-parsing.md"
+    handsOnDeliverable: "Parser output for a synthetic PDF and a Markdown page"
+    definitionOfDone:
+      - "Parser outputs stored in examples"
+      - "Source URI retained"
+      - "Known limitations listed"
+  - id: "P2-T03"
+    title: "Chunking strategies"
+    phase: P2
+    description: "Split documents so retrieval stays precise."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T02"
+      - "P1-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T03-chunking-strategies.md"
+    handsOnDeliverable: "Chunking config and sample chunks for Atlas docs"
+    definitionOfDone:
+      - "Two strategies compared"
+      - "Parent IDs stored"
+      - "Chosen default documented"
+  - id: "P2-T04"
+    title: "Embedding models"
+    phase: P2
+    description: "Turn chunks into vectors with a chosen embedding model."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T03"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T04-embedding-models.md"
+    handsOnDeliverable: "Embedding configuration note"
+    definitionOfDone:
+      - "Model name recorded"
+      - "Dimension recorded"
+      - "Mismatch risk documented"
+  - id: "P2-T05"
+    title: "Vector similarity"
+    phase: P2
+    description: "Use cosine or related similarity as a ranking signal."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P2-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T05-vector-similarity.md"
+    handsOnDeliverable: "Similarity notebook or script on synthetic embeddings"
+    definitionOfDone:
+      - "Metric documented"
+      - "Top-k used"
+      - "A false-friend example exists"
+  - id: "P2-T06"
+    title: "Vector databases"
+    phase: P2
+    description: "Store embeddings with metadata for filtered search."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T05"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T06-vector-databases.md"
+    handsOnDeliverable: "Local vector store choice documented for the prototype"
+    definitionOfDone:
+      - "Local index runs"
+      - "Metadata stored"
+      - "Managed DB decision deferred or ADRed"
+  - id: "P2-T07"
+    title: "Semantic search"
+    phase: P2
+    description: "Retrieve by meaning rather than exact words."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T06"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T07-semantic-search.md"
+    handsOnDeliverable: "Semantic search demo on Atlas docs"
+    definitionOfDone:
+      - "Demo recorded"
+      - "Known miss documented"
+      - "Not the only retriever"
+  - id: "P2-T08"
+    title: "Keyword search"
+    phase: P2
+    description: "Retrieve exact symbols, error codes, and topic names."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T02"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T08-keyword-search.md"
+    handsOnDeliverable: "Keyword index over synthetic code and docs"
+    definitionOfDone:
+      - "Class-name query works"
+      - "Limitations noted"
+      - "Index is local"
+  - id: "P2-T09"
+    title: "Hybrid retrieval"
+    phase: P2
+    description: "Fuse semantic and keyword results."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T07"
+      - "P2-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T09-hybrid-retrieval.md"
+    handsOnDeliverable: "Hybrid retriever with a documented fusion method"
+    definitionOfDone:
+      - "Fusion documented"
+      - "One hybrid demo"
+      - "Filters still apply"
+  - id: "P2-T10"
+    title: "Metadata filtering"
+    phase: P2
+    description: "Restrict retrieval by source, time, and ACL."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T06"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T10-metadata-filtering.md"
+    handsOnDeliverable: "Filter examples on source type and ACL"
+    definitionOfDone:
+      - "ACL field exists on chunks"
+      - "Filter demo works"
+      - "Default deny documented"
+  - id: "P2-T11"
+    title: Reranking
+    phase: P2
+    description: "Reorder retrieved candidates with a stronger model or rules."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T09"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P2/P2-T11-reranking.md"
+    handsOnDeliverable: "Optional rerank step in the prototype"
+    definitionOfDone:
+      - "Rerank decision documented (use or defer)"
+      - "Latency considered"
+      - "Labels stored"
+  - id: "P2-T12"
+    title: "Context assembly"
+    phase: P2
+    description: "Pack retrieved evidence into the prompt with structure."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T09"
+      - "P1-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T12-context-assembly.md"
+    handsOnDeliverable: "Context packer that labels each passage"
+    definitionOfDone:
+      - "Packer exists"
+      - "Labels include URI"
+      - "Overflow policy documented"
+  - id: "P2-T13"
+    title: "Source citations"
+    phase: P2
+    description: "Return URIs, titles, and supporting quotes."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T12"
+      - "P1-T07"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T13-source-citations.md"
+    handsOnDeliverable: "Cited answer format in the RAG prototype"
+    definitionOfDone:
+      - "Citation schema in answers"
+      - "Invalid citations rejected"
+      - "Demo uses synthetic URIs"
+  - id: "P2-T14"
+    title: "Retrieval evaluation"
+    phase: P2
+    description: "Measure recall, precision, and citation quality."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T09"
+      - "P2-T13"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T14-retrieval-evaluation.md"
+    handsOnDeliverable: "Tiny golden set with retrieval metrics"
+    definitionOfDone:
+      - "Golden file committed"
+      - "Metric script or sheet exists"
+      - "One known failure documented"
+  - id: "P2-T15"
+    title: "Knowledge freshness"
+    phase: P2
+    description: "Prefer current versions and show document dates."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T10"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P2/P2-T15-knowledge-freshness.md"
+    handsOnDeliverable: "Freshness fields on chunks and in citations"
+    definitionOfDone:
+      - "Version fields exist"
+      - "Demo of v2 vs v3"
+      - "Users see dates"
+  - id: "P3-T01"
+    title: "GCP project architecture"
+    phase: P3
+    description: "Map GCP projects, folders, and environments for the agent."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T04"
+      - "P0-T06"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T01-gcp-project-architecture.md"
+    handsOnDeliverable: "Environment diagram for local, staging, and production (undeployed)"
+    definitionOfDone:
+      - "Diagram exists"
+      - "Identities named"
+      - "No real project IDs with secrets committed"
+  - id: "P3-T02"
+    title: "Gemini model integration"
+    phase: P3
+    description: "Call Gemini through Google Cloud supported APIs from the agent skeleton."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P1-T10"
+      - "P3-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T02-gemini-model-integration.md"
+    handsOnDeliverable: "Agent skeleton configured for a Gemini model name"
+    definitionOfDone:
+      - "Model name is config"
+      - "Auth documented"
+      - "Failure path documented"
+  - id: "P3-T03"
+    title: "Vertex AI and Agent Platform concepts"
+    phase: P3
+    description: "Learn Vertex AI building blocks relevant to agents."
+    priority: medium
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P3-T01"
+      - "P3-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T03-vertex-ai-and-agent-platform-concepts.md"
+    handsOnDeliverable: "Note mapping Vertex concepts to this architecture"
+    definitionOfDone:
+      - "Mapping table exists"
+      - "No unused services in the skeleton"
+      - "Sources are official docs"
+  - id: "P3-T04"
+    title: "Google ADK"
+    phase: P3
+    description: "Use Agent Development Kit as the agent framework."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P3-T02"
+      - "P1-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T04-google-adk.md"
+    handsOnDeliverable: "ADK agent module with a root_agent placeholder"
+    definitionOfDone:
+      - "Agent module exists"
+      - "Runs locally without production data"
+      - "ADK web not treated as production UI"
+  - id: "P3-T05"
+    title: "Agents, sessions and state"
+    phase: P3
+    description: "Understand ADK sessions and what state is safe to keep."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T05-agents-sessions-and-state.md"
+    handsOnDeliverable: "Session-state policy note"
+    definitionOfDone:
+      - "Policy written"
+      - "Session key includes user"
+      - "Secrets forbidden in state"
+  - id: "P3-T06"
+    title: "Tool definitions and execution"
+    phase: P3
+    description: "Define ADK tools with schemas and deterministic executors."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P3-T04"
+      - "P1-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T06-tool-definitions-and-execution.md"
+    handsOnDeliverable: "Two tools: retrieve_chunks and lookup_symbol (mocked)"
+    definitionOfDone:
+      - "Schemas written"
+      - "Tests for happy path and bad args"
+      - "Read-only enforced"
+  - id: "P3-T07"
+    title: "Cloud Storage"
+    phase: P3
+    description: "Plan object storage for raw artifacts and index snapshots."
+    priority: medium
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T07-cloud-storage.md"
+    handsOnDeliverable: "Bucket layout document (no real bucket required)"
+    definitionOfDone:
+      - "Layout documented"
+      - "Hash field included"
+      - "No public buckets in design"
+  - id: "P3-T08"
+    title: "Cloud Run"
+    phase: P3
+    description: "Host the agent API as a container on Cloud Run."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P3-T01"
+      - "P3-T04"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T08-cloud-run.md"
+    handsOnDeliverable: "Dockerfile sketch and Cloud Run service notes"
+    definitionOfDone:
+      - "Dockerfile exists"
+      - "Statelessness documented"
+      - "Authn for invokers described"
+  - id: "P3-T09"
+    title: "IAM and service accounts"
+    phase: P3
+    description: "Assign least-privilege identities to ingest and serve."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P0-T06"
+      - "P3-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T09-iam-and-service-accounts.md"
+    handsOnDeliverable: "Service account matrix"
+    definitionOfDone:
+      - "Matrix exists"
+      - "No editor-on-project in the design"
+      - "Human vs workload split"
+  - id: "P3-T10"
+    title: "Secret Manager"
+    phase: P3
+    description: "Store API keys and connector credentials outside git."
+    priority: high
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T09"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T10-secret-manager.md"
+    handsOnDeliverable: "Secret naming and rotation notes"
+    definitionOfDone:
+      - "Secret inventory exists"
+      - "Gitignore covers .env"
+      - "Prompt policy forbids secrets"
+  - id: "P3-T11"
+    title: "Logging and observability"
+    phase: P3
+    description: "Log prompts metadata, tool calls, and errors without leaking secrets."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T11-logging-and-observability.md"
+    handsOnDeliverable: "Log field catalog"
+    definitionOfDone:
+      - "Catalog exists"
+      - "request_id specified"
+      - "Redaction rules specified"
+  - id: "P3-T12"
+    title: "Local versus cloud development"
+    phase: P3
+    description: "Keep a fast local loop and a documented cloud path."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T04"
+      - "P3-T08"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P3/P3-T12-local-versus-cloud-development.md"
+    handsOnDeliverable: "Dev loop documented in README and AGENTS.md"
+    definitionOfDone:
+      - "Local loop documented"
+      - "Cloud path documented"
+      - "Fixtures cover unit tests"
+  - id: "P4-T01"
+    title: "Ingestion architecture"
+    phase: P4
+    description: "Design the batch pipeline from source to index."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P0-T04"
+      - "P2-T01"
+      - "P3-T07"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T01-ingestion-architecture.md"
+    handsOnDeliverable: "Ingestion architecture in docs/architecture/ingestion-pipeline.md"
+    definitionOfDone:
+      - "Interface sketched in ingestion/"
+      - "Diagram exists"
+      - "Serving path remains separate"
+  - id: "P4-T02"
+    title: "Batch and incremental ingestion"
+    phase: P4
+    description: "Choose full rebuilds vs change feeds per source."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T02-batch-and-incremental-ingestion.md"
+    handsOnDeliverable: "Per-source ingest mode table"
+    definitionOfDone:
+      - "Table exists for ten sources"
+      - "Hash strategy defined"
+      - "Deletion called out"
+  - id: "P4-T03"
+    title: "Source adapters"
+    phase: P4
+    description: "Implement a common adapter contract."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P4-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T03-source-adapters.md"
+    handsOnDeliverable: "Base adapter class and one fake adapter"
+    definitionOfDone:
+      - "Interface in ingestion/"
+      - "Fake adapter tested"
+      - "Metadata required fields enforced"
+  - id: "P4-T04"
+    title: "PDF extraction"
+    phase: P4
+    description: "Extract text and page numbers from PDFs."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+      - "P2-T02"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T04-pdf-extraction.md"
+    handsOnDeliverable: "PDF adapter over synthetic design PDFs"
+    definitionOfDone:
+      - "Page numbers present"
+      - "Empty-page handling defined"
+      - "OCR marked advanced"
+  - id: "P4-T05"
+    title: "Confluence integration"
+    phase: P4
+    description: "Plan read-only Confluence fetching with spaces and versions."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T05-confluence-integration.md"
+    handsOnDeliverable: "Confluence connector design (no live calls)"
+    definitionOfDone:
+      - "Allowlist in design"
+      - "Fixtures not live calls"
+      - "Version field included"
+  - id: "P4-T06"
+    title: "Git integration"
+    phase: P4
+    description: "Index authorized Git repositories and metadata."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T06-git-integration.md"
+    handsOnDeliverable: "Git adapter over the synthetic repo snapshot"
+    definitionOfDone:
+      - "SHA on chunks"
+      - "Path filter exists"
+      - "No write remotes in design"
+  - id: "P4-T07"
+    title: "SVN integration"
+    phase: P4
+    description: "Index legacy Subversion trees that still hold design history."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: advanced
+    learningDoc: "docs/learning/P4/P4-T07-svn-integration.md"
+    handsOnDeliverable: "SVN connector design"
+    definitionOfDone:
+      - "Revision in metadata"
+      - "Priority is advanced unless needed"
+      - "Read-only"
+  - id: "P4-T08"
+    title: "Java code indexing"
+    phase: P4
+    description: "Extract symbols, comments, and Spring mappings from Java."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P4-T06"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T08-java-code-indexing.md"
+    handsOnDeliverable: "Symbol index for synthetic Spring code"
+    definitionOfDone:
+      - "Symbol table exists"
+      - "HTTP mappings extracted"
+      - "SHA recorded"
+  - id: "P4-T09"
+    title: "Database schema discovery"
+    phase: P4
+    description: "Read schemas, not production row dumps."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T09-database-schema-discovery.md"
+    handsOnDeliverable: "Schema catalog from synthetic SQL"
+    definitionOfDone:
+      - "Tables and columns listed"
+      - "PKs/FKs listed"
+      - "No live DB required"
+  - id: "P4-T10"
+    title: "Safe read-only SQL access"
+    phase: P4
+    description: "If live SQL exists, constrain it hard."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T09"
+      - "P0-T06"
+    defaultOwner: "developer-b"
+    designation: advanced
+    learningDoc: "docs/learning/P4/P4-T10-safe-read-only-sql-access.md"
+    handsOnDeliverable: "SQL tool policy and allowlist"
+    definitionOfDone:
+      - "Policy written"
+      - "Default is schema-only for MVP"
+      - "Approval path defined"
+  - id: "P4-T11"
+    title: "Kafka schema and event inspection"
+    phase: P4
+    description: "Inspect topics and schemas, not a production consumer lag replica."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T11-kafka-schema-and-event-inspection.md"
+    handsOnDeliverable: "Kafka metadata fixture and connector design"
+    definitionOfDone:
+      - "Schema files indexed"
+      - "Live consume marked non-goal"
+      - "Provenance includes schema version"
+  - id: "P4-T12"
+    title: "REST API integration"
+    phase: P4
+    description: "Index OpenAPI specs and, optionally, safe live GETs."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P4-T03"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T12-rest-api-integration.md"
+    handsOnDeliverable: "OpenAPI catalog from synthetic specs"
+    definitionOfDone:
+      - "Operations listed"
+      - "Live GET optional/advanced"
+      - "Auth schemes recorded"
+  - id: "P4-T13"
+    title: "Shared-drive synchronization"
+    phase: P4
+    description: "Sync approved folders from network or Drive-like stores."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+      - "P4-T04"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T13-shared-drive-synchronization.md"
+    handsOnDeliverable: "Folder allowlist and hash-sync design"
+    definitionOfDone:
+      - "Allowlist documented"
+      - "Delete simulated"
+      - "No real corporate mount used"
+  - id: "P4-T14"
+    title: "Microsoft Graph and Teams transcripts"
+    phase: P4
+    description: "Ingest meeting metadata and transcripts through Graph with least privilege."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T03"
+      - "P0-T06"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T14-microsoft-graph-and-teams-transcripts.md"
+    handsOnDeliverable: "Teams connector design covering Graph permissions"
+    definitionOfDone:
+      - "Permission list written"
+      - "Synthetic transcript ingested in design"
+      - "No tenant is contacted"
+  - id: "P4-T15"
+    title: "Recording transcription considerations"
+    phase: P4
+    description: "Treat recordings as higher-risk than transcripts."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P4-T14"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P4/P4-T15-recording-transcription-considerations.md"
+    handsOnDeliverable: "Recording policy in the Teams connector doc"
+    definitionOfDone:
+      - "Default deny recordings"
+      - "Consent noted"
+      - "Storage location noted"
+  - id: "P4-T16"
+    title: "Document versioning"
+    phase: P4
+    description: "Keep source versions on every indexed object."
+    priority: high
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T15"
+      - "P4-T02"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T16-document-versioning.md"
+    handsOnDeliverable: "Version fields in SourceDocument"
+    definitionOfDone:
+      - "Fields exist"
+      - "Raw objects not overwritten in design"
+      - "Citations include version"
+  - id: "P4-T17"
+    title: Deduplication
+    phase: P4
+    description: "Collapse identical or near-identical documents."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P4-T16"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T17-deduplication.md"
+    handsOnDeliverable: "Hash-based dedup design"
+    definitionOfDone:
+      - "Hash dedup specified"
+      - "Aliases preserved"
+      - "Fuzzy marked advanced"
+  - id: "P4-T18"
+    title: "Deletion propagation"
+    phase: P4
+    description: "Remove or tombstone index entries when sources delete content."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T02"
+      - "P4-T17"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T18-deletion-propagation.md"
+    handsOnDeliverable: "Tombstone behavior in the pipeline"
+    definitionOfDone:
+      - "Delete path documented"
+      - "Reconcile mentioned"
+      - "Serving cache considered"
+  - id: "P4-T19"
+    title: "Source access permissions"
+    phase: P4
+    description: "Copy source ACLs into index metadata."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P0-T06"
+      - "P4-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T19-source-access-permissions.md"
+    handsOnDeliverable: "ACL model on chunks"
+    definitionOfDone:
+      - "ACL fields specified"
+      - "Unknown ACL = skip"
+      - "Retrieve filter specified"
+  - id: "P4-T20"
+    title: "Indexing and reindexing"
+    phase: P4
+    description: "Rebuild indexes safely without serving garbage."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T01"
+      - "P2-T06"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P4/P4-T20-indexing-and-reindexing.md"
+    handsOnDeliverable: "Blue/green index swap design"
+    definitionOfDone:
+      - "Snapshot layout defined"
+      - "Swap is atomic in design"
+      - "Rollback described"
+  - id: "P5-T01"
+    title: "Agent execution lifecycle"
+    phase: P5
+    description: "Trace a request from user question to final answer."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T04"
+      - "P3-T05"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T01-agent-execution-lifecycle.md"
+    handsOnDeliverable: "Lifecycle sequence diagram"
+    definitionOfDone:
+      - "Diagram exists"
+      - "Error path included"
+      - "Matches ADK mental model"
+  - id: "P5-T02"
+    title: "Tool selection"
+    phase: P5
+    description: "Help the model pick the right tool."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T06"
+      - "P5-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T02-tool-selection.md"
+    handsOnDeliverable: "Tool-routing examples"
+    definitionOfDone:
+      - "Expected-tool table exists"
+      - "Catalog stays small"
+      - "Overlaps noted"
+  - id: "P5-T03"
+    title: "Tool schemas"
+    phase: P5
+    description: "Specify parameters tightly."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T03-tool-schemas.md"
+    handsOnDeliverable: "JSON schemas for MVP tools"
+    definitionOfDone:
+      - "Three schemas written"
+      - "Max lengths set"
+      - "Validation tests planned"
+  - id: "P5-T04"
+    title: "Tool calling"
+    phase: P5
+    description: "Execute calls with tracing and bounded results."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P5-T03"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T04-tool-calling.md"
+    handsOnDeliverable: "Tool executor with tests"
+    definitionOfDone:
+      - "Tests exist"
+      - "Timeouts configured"
+      - "Result size capped"
+  - id: "P5-T05"
+    title: "Multi-step reasoning"
+    phase: P5
+    description: "Allow several tool hops with a hop limit."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P5-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T05-multi-step-reasoning.md"
+    handsOnDeliverable: "Max-hop policy and a 2-step demo"
+    definitionOfDone:
+      - "Max hops configured"
+      - "Demo recorded"
+      - "Partial answer policy written"
+  - id: "P5-T06"
+    title: "Query planning"
+    phase: P5
+    description: "Decompose questions into retrieval subgoals."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T05"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P5/P5-T06-query-planning.md"
+    handsOnDeliverable: "Planner examples for cross-source questions"
+    definitionOfDone:
+      - "Five plans written"
+      - "Heuristic default for MVP"
+      - "Plans logged"
+  - id: "P5-T07"
+    title: "Read-only diagnostic tools"
+    phase: P5
+    description: "Expose inspect tools that cannot mutate systems."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T10"
+      - "P3-T06"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T07-read-only-diagnostic-tools.md"
+    handsOnDeliverable: "Diagnostic tool list"
+    definitionOfDone:
+      - "Capability list exists"
+      - "No write tools in code"
+      - "Prompt restates read-only"
+  - id: "P5-T08"
+    title: "MCP fundamentals"
+    phase: P5
+    description: "Learn Model Context Protocol as a possible tool transport."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P5-T03"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P5/P5-T08-mcp-fundamentals.md"
+    handsOnDeliverable: "MCP applicability note"
+    definitionOfDone:
+      - "Note exists"
+      - "MVP remains in-process tools"
+      - "Security warning recorded"
+  - id: "P5-T09"
+    title: "Agent state and memory"
+    phase: P5
+    description: "Define short-term memory vs durable knowledge."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T05"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T09-agent-state-and-memory.md"
+    handsOnDeliverable: "Memory policy"
+    definitionOfDone:
+      - "Policy exists"
+      - "Index remains the knowledge store"
+      - "Summaries have TTL"
+  - id: "P5-T10"
+    title: "Conversation context"
+    phase: P5
+    description: "Carry follow-ups without losing citations."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T09"
+      - "P2-T12"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T10-conversation-context.md"
+    handsOnDeliverable: "Follow-up handling examples"
+    definitionOfDone:
+      - "Entity store specified"
+      - "Each turn still cites"
+      - "History budget set"
+  - id: "P5-T11"
+    title: "Error handling"
+    phase: P5
+    description: "Map tool, model, and auth errors to user-safe messages."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T11-error-handling.md"
+    handsOnDeliverable: "Error catalog"
+    definitionOfDone:
+      - "Catalog exists"
+      - "Deny vs empty distinguished"
+      - "No stack traces to users"
+  - id: "P5-T12"
+    title: "Timeouts and retries"
+    phase: P5
+    description: "Bound time and retry only idempotent calls."
+    priority: medium
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T11"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T12-timeouts-and-retries.md"
+    handsOnDeliverable: "Timeout and retry policy"
+    definitionOfDone:
+      - "Policy exists"
+      - "Overall deadline set"
+      - "Non-idempotent retries forbidden"
+  - id: "P5-T13"
+    title: "Cross-source question answering"
+    phase: P5
+    description: "Answer questions that need more than one source type."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P5-T05"
+      - "P2-T09"
+      - "P4-T08"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P5/P5-T13-cross-source-question-answering.md"
+    handsOnDeliverable: "Three cross-source demos on synthetic data"
+    definitionOfDone:
+      - "Three demos"
+      - "Citations from ≥2 sources each"
+      - "Conflicts called out if present"
+  - id: "P5-T14"
+    title: "When multi-agent systems are appropriate"
+    phase: P5
+    description: "Stay with one agent until a split is justified."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 0
+    dependencies:
+      - "P5-T01"
+      - "P0-T07"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P5/P5-T14-when-multi-agent-systems-are-appropriate.md"
+    handsOnDeliverable: "ADR 0002 review note"
+    definitionOfDone:
+      - "ADR 0002 accepted"
+      - "MVP is one agent"
+      - "Future split criteria written"
+  - id: "P6-T01"
+    title: Groundedness
+    phase: P6
+    description: "Score whether claims are supported by cited passages."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T13"
+      - "P1-T09"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T01-groundedness.md"
+    handsOnDeliverable: "Groundedness rubric and 10 scored answers"
+    definitionOfDone:
+      - "Rubric exists"
+      - "10 annotations committed"
+      - "Unsupported answers fail CI later"
+  - id: "P6-T02"
+    title: "Faithfulness and answer correctness"
+    phase: P6
+    description: "Separate “faithful to sources” from “correct in the world.”"
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T01"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T02-faithfulness-and-answer-correctness.md"
+    handsOnDeliverable: "Two-score eval sheet"
+    definitionOfDone:
+      - "Both scores defined"
+      - "Examples of divergence exist"
+      - "Attribution rules written"
+  - id: "P6-T03"
+    title: "Retrieval quality"
+    phase: P6
+    description: "Track hit-rate, MRR, and junk rate."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P2-T14"
+      - "P6-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T03-retrieval-quality.md"
+    handsOnDeliverable: "Retrieval dashboard fields (even if a sheet)"
+    definitionOfDone:
+      - "Metrics computed"
+      - "Leak test defined"
+      - "Results stored"
+  - id: "P6-T04"
+    title: "Test datasets"
+    phase: P6
+    description: "Build synthetic, versioned evaluation datasets."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P6-T03"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T04-test-datasets.md"
+    handsOnDeliverable: "Dataset layout under examples or eval/"
+    definitionOfDone:
+      - "v1 committed"
+      - "Gold source IDs present"
+      - "No real data"
+  - id: "P6-T05"
+    title: "Golden questions"
+    phase: P6
+    description: "Maintain the must-never-regress question list."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T04"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T05-golden-questions.md"
+    handsOnDeliverable: "Golden question list covering example user questions"
+    definitionOfDone:
+      - "10 golds exist"
+      - "Mapped to vision"
+      - "Owners assigned"
+  - id: "P6-T06"
+    title: "Regression testing"
+    phase: P6
+    description: "Run eval in CI on a smoke subset."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P6-T05"
+      - "P8-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T06-regression-testing.md"
+    handsOnDeliverable: "CI smoke eval job design"
+    definitionOfDone:
+      - "CI path documented"
+      - "Fixture tests exist"
+      - "Live API not required on PRs"
+  - id: "P6-T07"
+    title: "Permission-aware retrieval"
+    phase: P6
+    description: "Filter chunks by the asking user."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P4-T19"
+      - "P2-T10"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T07-permission-aware-retrieval.md"
+    handsOnDeliverable: "ACL filter tests"
+    definitionOfDone:
+      - "Tests exist"
+      - "Filter is in code"
+      - "Prompt-only ACL rejected"
+  - id: "P6-T08"
+    title: "Least privilege"
+    phase: P6
+    description: "Apply least privilege to humans, workloads, and tools."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T09"
+      - "P6-T07"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T08-least-privilege.md"
+    handsOnDeliverable: "Privilege review checklist"
+    definitionOfDone:
+      - "Checklist exists"
+      - "Unused roles listed for removal"
+      - "Tool args reviewed"
+  - id: "P6-T09"
+    title: "Prompt injection defenses"
+    phase: P6
+    description: "Treat retrieved text and users as untrusted."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P1-T05"
+      - "P6-T07"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T09-prompt-injection-defenses.md"
+    handsOnDeliverable: "Injection test cases"
+    definitionOfDone:
+      - "Fixtures exist"
+      - "Sources cannot change policy"
+      - "No write tools to invoke"
+  - id: "P6-T10"
+    title: "Secrets and PII protection"
+    phase: P6
+    description: "Keep secrets and PII out of logs, prompts, and indexes unless allowed."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T10"
+      - "P6-T09"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T10-secrets-and-pii-protection.md"
+    handsOnDeliverable: "Redaction rules"
+    definitionOfDone:
+      - "Rules written"
+      - "Token scan exists or is specified"
+      - "Customer PII out of scope"
+  - id: "P6-T11"
+    title: "Audit logging"
+    phase: P6
+    description: "Record who asked what, which sources were used, and what was returned at a metadata level."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P3-T11"
+      - "P6-T07"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T11-audit-logging.md"
+    handsOnDeliverable: "Audit event schema"
+    definitionOfDone:
+      - "Schema exists"
+      - "Debug vs audit split"
+      - "Access to audit restricted"
+  - id: "P6-T12"
+    title: "Data retention"
+    phase: P6
+    description: "Define how long raw, index, log, and transcript data live."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P6-T11"
+      - "P4-T15"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T12-data-retention.md"
+    handsOnDeliverable: "Retention table"
+    definitionOfDone:
+      - "Table exists"
+      - "Legal review flagged"
+      - "Transcripts shorter than PDFs"
+  - id: "P6-T13"
+    title: "Human approval for risky actions"
+    phase: P6
+    description: "Any future write or live query beyond allowlist needs a human gate."
+    priority: high
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P5-T07"
+      - "P0-T02"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T13-human-approval-for-risky-actions.md"
+    handsOnDeliverable: "Approval policy"
+    definitionOfDone:
+      - "Policy exists"
+      - "MVP risky action count is 0"
+      - "Future gate described"
+  - id: "P6-T14"
+    title: "Cost and latency measurement"
+    phase: P6
+    description: "Budget tokens, tool time, and money per question."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P1-T10"
+      - "P5-T12"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T14-cost-and-latency-measurement.md"
+    handsOnDeliverable: "Per-request cost/latency log fields"
+    definitionOfDone:
+      - "Fields defined"
+      - "Mock timing works"
+      - "SLO is labeled target"
+  - id: "P6-T15"
+    title: "Failure recovery"
+    phase: P6
+    description: "Degrade gracefully when model, index, or a connector fails."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P5-T11"
+      - "P4-T20"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P6/P6-T15-failure-recovery.md"
+    handsOnDeliverable: "Degradation matrix"
+    definitionOfDone:
+      - "Matrix exists"
+      - "Last-good index referenced"
+      - "User-visible degraded mode defined"
+  - id: "P7-T01"
+    title: "Meeting transcript intelligence"
+    phase: P7
+    description: "Turn transcripts into searchable, attributed knowledge."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T14"
+      - "P2-T13"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T01-meeting-transcript-intelligence.md"
+    handsOnDeliverable: "Transcript chunking with speakers and times"
+    definitionOfDone:
+      - "Speaker+time on chunks"
+      - "Citation includes timestamp"
+      - "Fixture committed"
+  - id: "P7-T02"
+    title: "Decision extraction"
+    phase: P7
+    description: "Extract candidate decisions from meetings and docs."
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 4
+    dependencies:
+      - "P7-T01"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T02-decision-extraction.md"
+    handsOnDeliverable: "Decision records from a synthetic meeting"
+    definitionOfDone:
+      - "Schema exists"
+      - "Evidence required"
+      - "Status not always confirmed"
+  - id: "P7-T03"
+    title: "Decision status and provenance"
+    phase: P7
+    description: "Track proposed, accepted, superseded, and rejected."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P7-T02"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T03-decision-status-and-provenance.md"
+    handsOnDeliverable: "Status model"
+    definitionOfDone:
+      - "Enum defined"
+      - "Chain demo exists"
+      - "Agent must surface status"
+  - id: "P7-T04"
+    title: "Cross-meeting comparison"
+    phase: P7
+    description: "Compare the same topic across meetings over time."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P7-T03"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T04-cross-meeting-comparison.md"
+    handsOnDeliverable: "Timeline for one decision topic"
+    definitionOfDone:
+      - "Timeline demo"
+      - "Topic key defined"
+      - "Dates visible"
+  - id: "P7-T05"
+    title: "Requirements traceability"
+    phase: P7
+    description: "Link requirements to design, code, and tests when evidence exists."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P7-T02"
+      - "P4-T08"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T05-requirements-traceability.md"
+    handsOnDeliverable: "Trace matrix for synthetic REQ-12"
+    definitionOfDone:
+      - "Matrix exists"
+      - "Gaps visible"
+      - "No hallucinated links"
+  - id: "P7-T06"
+    title: "Code-to-requirement mapping"
+    phase: P7
+    description: "Connect Java symbols to requirement and design IDs."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P7-T05"
+      - "P4-T08"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T06-code-to-requirement-mapping.md"
+    handsOnDeliverable: "Symbol-to-REQ index for synthetic code"
+    definitionOfDone:
+      - "Explicit path works"
+      - "Inferred marked low confidence"
+      - "Evidence stored"
+  - id: "P7-T07"
+    title: "Architecture dependency analysis"
+    phase: P7
+    description: "Describe component dependencies from code, APIs, and events."
+    priority: medium
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P4-T08"
+      - "P4-T11"
+      - "P4-T12"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T07-architecture-dependency-analysis.md"
+    handsOnDeliverable: "Dependency sketch for Atlas inventory"
+    definitionOfDone:
+      - "Graph exists"
+      - "Caveat documented"
+      - "Sources cited on edges if possible"
+  - id: "P7-T08"
+    title: "Change-impact analysis"
+    phase: P7
+    description: "Answer “what would a proposed change touch?”"
+    priority: high
+    estimatedLearningHours: 3
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P7-T07"
+      - "P7-T05"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T08-change-impact-analysis.md"
+    handsOnDeliverable: "Impact answer for a synthetic TTL change"
+    definitionOfDone:
+      - "Report includes multiple node types"
+      - "Citations present"
+      - "Uncertainty listed"
+  - id: "P7-T09"
+    title: "Contradiction detection"
+    phase: P7
+    description: "Surface conflicting statements instead of averaging them."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P7-T03"
+      - "P5-T13"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T09-contradiction-detection.md"
+    handsOnDeliverable: "Contradiction example in golden set"
+    definitionOfDone:
+      - "Golden exists"
+      - "Agent policy written"
+      - "No silent resolve"
+  - id: "P7-T10"
+    title: "Temporal knowledge and superseded decisions"
+    phase: P7
+    description: "Answer as of a date and mark superseded knowledge."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P2-T15"
+      - "P7-T03"
+    defaultOwner: "developer-a"
+    designation: advanced
+    learningDoc: "docs/learning/P7/P7-T10-temporal-knowledge-and-superseded-decisions.md"
+    handsOnDeliverable: "As-of query example"
+    definitionOfDone:
+      - "Fields exist in design"
+      - "As-of demo"
+      - "Superseded warning specified"
+  - id: "P8-T01"
+    title: Containerization
+    phase: P8
+    description: "Package the agent as a small, reproducible image."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P3-T08"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T01-containerization.md"
+    handsOnDeliverable: "Dockerfile and .dockerignore"
+    definitionOfDone:
+      - "Dockerfile exists"
+      - "dockerignore exists"
+      - "No secrets copied"
+  - id: "P8-T02"
+    title: CI/CD
+    phase: P8
+    description: "Lint, test, build, and optionally deploy with GitHub Actions."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 3
+    dependencies:
+      - "P0-T08"
+      - "P6-T06"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T02-ci-cd.md"
+    handsOnDeliverable: "GitHub Actions workflows"
+    definitionOfDone:
+      - "Workflows in repo"
+      - "PR checks documented"
+      - "No long-lived cloud keys in GitHub if avoidable"
+  - id: "P8-T03"
+    title: "Infrastructure configuration"
+    phase: P8
+    description: "Describe infra as documented config, not click-ops only."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T01"
+      - "P8-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T03-infrastructure-configuration.md"
+    handsOnDeliverable: "Infra notes / example config files"
+    definitionOfDone:
+      - "Example exists"
+      - "Placeholders only"
+      - "Matches architecture"
+  - id: "P8-T04"
+    title: "Environment separation"
+    phase: P8
+    description: "Keep local, staging, and production isolated."
+    priority: high
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P8-T03"
+      - "P3-T01"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T04-environment-separation.md"
+    handsOnDeliverable: "Environment matrix"
+    definitionOfDone:
+      - "Matrix exists"
+      - "Local uses fixtures"
+      - "Prod data not in git"
+  - id: "P8-T05"
+    title: Monitoring
+    phase: P8
+    description: "Watch error rate, latency, and retrieval empties."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P3-T11"
+      - "P6-T14"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T05-monitoring.md"
+    handsOnDeliverable: "Monitoring checklist"
+    definitionOfDone:
+      - "SLI list exists"
+      - "Citation rate included"
+      - "No fake dashboards required yet"
+  - id: "P8-T06"
+    title: "Cost controls"
+    phase: P8
+    description: "Cap tokens, embeddings, and Cloud Run scale."
+    priority: medium
+    estimatedLearningHours: 1
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T14"
+      - "P8-T05"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T06-cost-controls.md"
+    handsOnDeliverable: "Cost control checklist"
+    definitionOfDone:
+      - "Caps in config"
+      - "Budget reminder written"
+      - "Reindex frequency limited"
+  - id: "P8-T07"
+    title: "Operational runbooks"
+    phase: P8
+    description: "Write short procedures for common failures."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T15"
+      - "P8-T05"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T07-operational-runbooks.md"
+    handsOnDeliverable: "Runbook stubs"
+    definitionOfDone:
+      - "Four stubs exist"
+      - "Rollback mentioned"
+      - "Secret leak included"
+  - id: "P8-T08"
+    title: "Performance testing"
+    phase: P8
+    description: "Test p95 latency with a small realistic mix."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T14"
+    defaultOwner: "developer-b"
+    designation: advanced
+    learningDoc: "docs/learning/P8/P8-T08-performance-testing.md"
+    handsOnDeliverable: "Perf scenario list"
+    definitionOfDone:
+      - "Mix documented"
+      - "p95 target labeled"
+      - "No fake load-test numbers"
+  - id: "P8-T09"
+    title: "Connector health monitoring"
+    phase: P8
+    description: "Detect stale or failing adapters."
+    priority: medium
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P4-T02"
+      - "P8-T05"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T09-connector-health-monitoring.md"
+    handsOnDeliverable: "Connector health fields"
+    definitionOfDone:
+      - "Fields defined"
+      - "Stale thresholds set"
+      - "Git vs PDF thresholds may differ"
+  - id: "P8-T10"
+    title: "Deployment and rollback"
+    phase: P8
+    description: "Deploy immutably and roll back service and index independently."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P8-T01"
+      - "P4-T20"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T10-deployment-and-rollback.md"
+    handsOnDeliverable: "Deploy/rollback procedure"
+    definitionOfDone:
+      - "Procedure exists"
+      - "Index and service separate"
+      - "Who-deploys defined"
+  - id: "P8-T11"
+    title: "User acceptance testing"
+    phase: P8
+    description: "Walk golden questions with both developers as users."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 2
+    dependencies:
+      - "P6-T05"
+      - "P5-T13"
+    defaultOwner: "developer-a"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T11-user-acceptance-testing.md"
+    handsOnDeliverable: "UAT checklist"
+    definitionOfDone:
+      - "Script exists"
+      - "Includes deny and unknown"
+      - "Sign-off field included"
+  - id: "P8-T12"
+    title: "Production readiness checklist"
+    phase: P8
+    description: "Gate MVP launch with an explicit checklist."
+    priority: high
+    estimatedLearningHours: 2
+    estimatedImplementationHours: 1
+    dependencies:
+      - "P8-T10"
+      - "P8-T07"
+      - "P6-T07"
+    defaultOwner: "developer-b"
+    designation: mvp
+    learningDoc: "docs/learning/P8/P8-T12-production-readiness-checklist.md"
+    handsOnDeliverable: "Readiness checklist in docs"
+    definitionOfDone:
+      - "Checklist exists"
+      - "ACL tests are a hard gate"
+      - "Limitations listed"

@@ -1,0 +1,19 @@
+{
+  "meetingId": "aip-meet-2026-03-12",
+  "title": "AIP reservation review",
+  "start": "2026-03-12T15:00:00Z",
+  "attendees": ["Jordan Chen", "Samira Patel"],
+  "acl_groups": ["engineering"],
+  "transcript": [
+    {
+      "start": "00:12:04",
+      "speaker": "Jordan Chen",
+      "text": "TTL stays 15 minutes. We should reject the 30 minute proposal from v2."
+    },
+    {
+      "start": "00:18:40",
+      "speaker": "Samira Patel",
+      "text": "Open question: do we need a customer-visible countdown in the API?"
+    }
+  ]
+}

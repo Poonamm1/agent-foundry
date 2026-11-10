@@ -1,0 +1,22 @@
+name: Bug
+description: Something broken in the hub, skeleton, or docs
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      placeholder: Commands or dashboard steps. No secrets.

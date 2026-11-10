@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pricingRules revision="1844">
+  <!-- Synthetic legacy module. Not used by reservation TTL. -->
+  <rule id="legacy-list-price" />
+</pricingRules>

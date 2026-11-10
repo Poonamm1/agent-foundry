@@ -1,0 +1,21 @@
+# Placeholder Cloud Run service. Substitute PROJECT_ID. Do not store secrets here.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: atlas-knowledge-agent
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: "2"
+    spec:
+      serviceAccountName: sa-agent-serve@PROJECT_ID.iam.gserviceaccount.com
+      containers:
+        - image: REGION-docker.pkg.dev/PROJECT_ID/atlas/agent:TAG
+          env:
+            - name: AGENT_MODEL
+              value: gemini-flash-latest
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi

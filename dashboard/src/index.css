@@ -1,0 +1,218 @@
+:root {
+  --bg: #f4f1ea;
+  --bg-elev: #fffdf8;
+  --ink: #1c1915;
+  --muted: #5c564c;
+  --line: #d9d0c3;
+  --accent: #215c4e;
+  --accent-2: #8a4b1f;
+  --ok: #215c4e;
+  --warn: #8a4b1f;
+  --bad: #8f2d2d;
+  --info: #2c4c7c;
+  --shadow: 0 1px 2px rgba(28, 25, 21, 0.06);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.45;
+}
+
+:root[data-theme="dark"] {
+  --bg: #161411;
+  --bg-elev: #201c18;
+  --ink: #f3eee6;
+  --muted: #b4aa9c;
+  --line: #3a342c;
+  --accent: #8fcec0;
+  --accent-2: #e0b089;
+  --ok: #8fcec0;
+  --warn: #e0b089;
+  --bad: #e08a8a;
+  --info: #9bb7e0;
+  --shadow: none;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a { color: var(--accent); }
+
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.brand h1 {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.brand p, .muted { color: var(--muted); }
+
+.notice {
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav button, .btn, .icon-btn {
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.nav button[aria-current="page"], .btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+:root[data-theme="dark"] .nav button[aria-current="page"],
+:root[data-theme="dark"] .btn.primary {
+  color: #161411;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+}
+
+.card strong { display: block; font-size: 1.35rem; }
+.card span { color: var(--muted); font-size: 0.85rem; }
+
+.bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 8px 0 0;
+}
+.bar > i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.toolbar input, .toolbar select, textarea, .detail input, .detail select {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.phase {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: var(--bg-elev);
+}
+
+.phase summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.phase summary::-webkit-details-marker { display: none; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.topic-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent);
+  text-align: left;
+}
+
+.pill {
+  display: inline-block;
+  border-radius: 99px;
+  padding: 1px 8px;
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+}
+
+.s-NotStarted { color: var(--muted); }
+.s-Learning { color: var(--info); }
+.s-Practicing { color: var(--accent); }
+.s-Blocked { color: var(--bad); }
+.s-Done { color: var(--ok); }
+
+.detail {
+  display: grid;
+  gap: 10px;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.errors { color: var(--bad); }
+.ok { color: var(--ok); }
+
+@media (max-width: 720px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  th { display: none; }
+  td { border: 0; padding: 4px 14px 8px; }
+}

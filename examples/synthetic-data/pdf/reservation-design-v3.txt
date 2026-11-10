@@ -1,0 +1,15 @@
+Title: Atlas Inventory Reservation Design v3
+Pages: 4
+acl_groups: [engineering]
+
+[Page 1]
+This document is the approved design for inventory reservation in the fictional Atlas Inventory Platform.
+
+[Page 2]
+A reservation binds stock to a checkout session. It is not a completed order.
+
+[Page 3]
+Data movement: API POST /reservations -> reservation table -> Kafka topic inventory.reserved.
+
+[Page 4]
+TTL is 15 minutes (changed from 30 minutes in v2). See ADR-0014 and meeting 2026-03-12.
