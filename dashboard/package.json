@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "copy-roadmap": "mkdir -p public/roadmap && cp ../roadmap/topics.yaml ../roadmap/progress.example.yaml ../roadmap/progress.yaml public/roadmap/",
+    "copy-roadmap": "node scripts/copy-public.mjs",
     "dev": "npm run copy-roadmap && vite",
     "build": "npm run copy-roadmap && tsc --noEmit && vite build",
     "preview": "vite preview",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
+    "marked": "^15.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

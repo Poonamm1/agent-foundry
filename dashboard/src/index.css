@@ -211,8 +211,51 @@ th, td {
 .errors { color: var(--bad); }
 .ok { color: var(--ok); }
 
+.docs-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.doc-list {
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-elev);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.doc-link {
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.doc-link.current { background: var(--line); }
+
+.markdown h1, .markdown h2, .markdown h3 { line-height: 1.25; }
+.markdown pre, .markdown code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.markdown pre {
+  overflow: auto;
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 8px;
+}
+.markdown table { width: 100%; border-collapse: collapse; }
+.markdown th, .markdown td { border: 1px solid var(--line); padding: 6px 8px; }
+
 @media (max-width: 720px) {
   table, thead, tbody, th, td, tr { display: block; }
   th { display: none; }
   td { border: 0; padding: 4px 14px 8px; }
+  .docs-layout { grid-template-columns: 1fr; }
+  .doc-list { max-height: 220px; }
 }

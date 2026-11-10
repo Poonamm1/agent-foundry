@@ -1,5 +1,7 @@
 # Agent Builder Hub
 
+**[Open Learning Dashboard](https://poonamm1.github.io/agent-foundry/)**
+
 Learning roadmap, architecture notes, and implementation tracker for a **Project Knowledge Agent** that will run on Google Cloud.
 
 The agent will answer grounded, source-cited questions about a software system by retrieving authorized sources (docs, code, schemas, events, APIs, and meeting transcripts). This repository does **not** ship the full agent yet. It is the foundation for two developers to learn and build in 8–10 weeks.

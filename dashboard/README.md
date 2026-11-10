@@ -15,4 +15,4 @@ There is **no** automatic GitHub write. Tokens must not be stored in the browser
 
 ## GitHub Pages
 
-CI builds this app with `base: './'` and can deploy `dashboard/dist`. Enable Pages (GitHub Actions) on the repository if you want a hosted tracker.
+The production base path is `/agent-foundry/`. Pushes to `main` deploy `dashboard/dist` with GitHub Actions. Pages must use **GitHub Actions** as the source. Local progress stays in `localStorage`.

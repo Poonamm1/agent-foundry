@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import yaml from "js-yaml";
 import type {
   Owner,
@@ -24,13 +24,10 @@ import {
 } from "./lib/storage";
 import { currentMilestone, ownerStats, phaseCompletion, remainingHours } from "./lib/metrics";
 import { parseYamlOrJson, toYaml } from "./lib/yaml";
+import { docLabel, type DocIndex } from "./lib/docs";
+import { MarkdownDoc } from "./MarkdownDoc";
 
-type View = "overview" | "roadmap";
-
-function docHref(path: string): string {
-  const github = "https://github.com/Poonamm1/agent-foundry/blob/main/";
-  return github + path;
-}
+type View = "overview" | "roadmap" | "learning" | "architecture" | "connectors";
 
 function statusClass(status: Status): string {
   return `s-${status.replace(/ /g, "")}`;
@@ -44,6 +41,8 @@ export default function App() {
   const [statusFilter, setStatusFilter] = useState<Status | "all">("all");
   const [ownerFilter, setOwnerFilter] = useState<Owner | "all">("all");
   const [selected, setSelected] = useState<Topic | null>(null);
+  const [docPath, setDocPath] = useState<string | null>(null);
+  const [docIndex, setDocIndex] = useState<DocIndex | null>(null);
   const [importMsg, setImportMsg] = useState<string>("");
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [loadError, setLoadError] = useState<string>("");
@@ -75,6 +74,26 @@ export default function App() {
   useEffect(() => {
     if (registry) saveLocalProgress(progress);
   }, [progress, registry]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}docs-index.json`)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Could not load docs index (${response.status})`);
+        return response.json() as Promise<DocIndex>;
+      })
+      .then(setDocIndex)
+      .catch(() => setDocIndex({ architecture: [], connectors: [], learning: [] }));
+  }, []);
+
+  function openDoc(path: string) {
+    setDocPath(path);
+    if (path.startsWith("docs/connectors/")) setView("connectors");
+    else if (path.startsWith("docs/learning/")) {
+      setView("learning");
+      const match = topics.find((topic) => topic.learningDoc === path);
+      if (match) setSelected(match);
+    } else if (path.startsWith("docs/architecture/")) setView("architecture");
+  }
 
   const topics = registry?.topics ?? [];
 
@@ -165,6 +184,39 @@ export default function App() {
           </button>
           <button aria-current={view === "roadmap" ? "page" : undefined} onClick={() => setView("roadmap")}>
             Roadmap
+          </button>
+          <button aria-current={view === "learning" ? "page" : undefined} onClick={() => setView("learning")}>
+            Learning
+          </button>
+          <button
+            aria-current={view === "architecture" ? "page" : undefined}
+            onClick={() => {
+              setView("architecture");
+              setDocPath((current) =>
+                current?.startsWith("docs/architecture/")
+                  ? current
+                  : docIndex?.architecture.find((path) => path.endsWith("README.md")) ??
+                    docIndex?.architecture[0] ??
+                    current,
+              );
+            }}
+          >
+            Architecture
+          </button>
+          <button
+            aria-current={view === "connectors" ? "page" : undefined}
+            onClick={() => {
+              setView("connectors");
+              setDocPath((current) =>
+                current?.startsWith("docs/connectors/")
+                  ? current
+                  : docIndex?.connectors.find((path) => path.endsWith("README.md")) ??
+                    docIndex?.connectors[0] ??
+                    current,
+              );
+            }}
+          >
+            Connectors
           </button>
           <button className="icon-btn" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             {theme === "light" ? "Dark" : "Light"} theme
@@ -325,11 +377,49 @@ export default function App() {
         </>
       )}
 
-      {selected && (
+      {view === "learning" && (
+        <DocLayout
+          items={topics.map((topic) => ({ path: topic.learningDoc, label: `${topic.id} ${topic.title}` }))}
+          active={docPath}
+          onOpen={openDoc}
+          empty="Select a topic to read its learning note."
+        >
+          {docPath?.startsWith("docs/learning/") ? (
+            <MarkdownDoc path={docPath} onNavigate={openDoc} />
+          ) : (
+            <p className="muted">Select a topic to read its learning note. Progress for that topic stays in this browser.</p>
+          )}
+        </DocLayout>
+      )}
+
+      {view === "architecture" && (
+        <DocLayout
+          items={(docIndex?.architecture ?? []).map((path) => ({ path, label: docLabel(path) }))}
+          active={docPath}
+          onOpen={openDoc}
+          empty="Architecture documents were not copied into this build."
+        >
+          {docPath?.startsWith("docs/architecture/") && <MarkdownDoc path={docPath} onNavigate={openDoc} />}
+        </DocLayout>
+      )}
+
+      {view === "connectors" && (
+        <DocLayout
+          items={(docIndex?.connectors ?? []).map((path) => ({ path, label: docLabel(path) }))}
+          active={docPath}
+          onOpen={openDoc}
+          empty="Connector documents were not copied into this build."
+        >
+          {docPath?.startsWith("docs/connectors/") && <MarkdownDoc path={docPath} onNavigate={openDoc} />}
+        </DocLayout>
+      )}
+
+      {selected && (view === "roadmap" || view === "learning") && (
         <TopicPanel
           topic={selected}
           row={progress[selected.id] ?? emptyProgress(selected)}
           onClose={() => setSelected(null)}
+          onOpenDoc={openDoc}
           onPatch={(u) => patch(selected.id, u)}
         />
       )}
@@ -363,15 +453,49 @@ export default function App() {
   );
 }
 
+function DocLayout({
+  items,
+  active,
+  onOpen,
+  empty,
+  children,
+}: {
+  items: { path: string; label: string }[];
+  active: string | null;
+  onOpen: (path: string) => void;
+  empty: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="docs-layout">
+      <nav className="doc-list" aria-label="Documents">
+        {items.length === 0 && <p className="muted">{empty}</p>}
+        {items.map((item) => (
+          <button
+            key={item.path}
+            className={item.path === active ? "doc-link current" : "doc-link"}
+            onClick={() => onOpen(item.path)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </nav>
+      <section className="card">{children}</section>
+    </div>
+  );
+}
+
 function TopicPanel({
   topic,
   row,
   onClose,
+  onOpenDoc,
   onPatch,
 }: {
   topic: Topic;
   row: TopicProgress;
   onClose: () => void;
+  onOpenDoc: (path: string) => void;
   onPatch: (u: Partial<TopicProgress>) => void;
 }) {
   return (
@@ -385,10 +509,9 @@ function TopicPanel({
         Phase {topic.phase} · {topic.designation} · {topic.priority} priority · learn {topic.estimatedLearningHours}h · implement {topic.estimatedImplementationHours}h
       </p>
       <p>
-        Learning doc:{" "}
-        <a href={docHref(topic.learningDoc)} target="_blank" rel="noreferrer">
-          {topic.learningDoc}
-        </a>
+        <button className="topic-btn" onClick={() => onOpenDoc(topic.learningDoc)}>
+          Open learning note
+        </button>
       </p>
       <p><strong>Hands-on:</strong> {topic.handsOnDeliverable}</p>
       <div>

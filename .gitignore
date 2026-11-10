@@ -13,6 +13,8 @@ build/
 node_modules/
 dashboard/dist/
 dashboard/public/roadmap/
+dashboard/public/docs/
+dashboard/public/docs-index.json
 .idea/
 .vscode/
 *.log
